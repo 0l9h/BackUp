@@ -2,13 +2,17 @@ import os
 import time
 import zipfile
 
-current_time = time.strftime('%Y%m%d%H%M%S')    #   current time
-print(current_time)
+current_time = time.strftime('%H%M%S')    #   current time
+current_date = time.strftime('%Y%m%d')    #   current date
 
 folderPath1 = 'C:\\My Documents'     #   Path to the folder, which you need to archive
 folderPath2 = 'C:\\Code'
 
-archivePath = 'D:\\Python\\backup\\'+current_time+'.zip'
+if not os.path.exists('D:\\Python\\backup'+os.sep+current_date):     #   if there isn't folder with current date name, create it
+    os.mkdir('D:\\Python\\backup'+os.sep+current_date)
+    print('Folder succesfully created')
+
+archivePath = 'D:\\Python\\backup' + os.sep + current_date + os.sep + current_time+'.zip'   #   place archive with current time as name to this directory
 
 
 def Parser(folderPath):
@@ -23,5 +27,7 @@ def Parser(folderPath):
 
 # create a ZipFile object
 with zipfile.ZipFile(archivePath, 'w') as zipObj:
-    Parser(folderPath1)
+    Parser(folderPath1)     #   Calling fucntion for different folders
     Parser(folderPath2)
+
+print('Backup succesfully created in directory', archivePath)

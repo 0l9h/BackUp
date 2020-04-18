@@ -24,4 +24,8 @@ $RECYCLE.BIN/
 # Windows shortcuts
 *.lnk
 
+backup_ver1.py
+backup_ver2.py
+backup_ver3.py
+
 # End of https://www.gitignore.io/api/windows
